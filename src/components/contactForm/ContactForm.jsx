@@ -7,18 +7,21 @@ const ContactForm = ({ addContact }) => {
       .required("Name is required")
       .min(3, "Name must be at least 3 characters")
       .max(50, "Name must be at most 50 characters"),
-    phone: Yup.string()
+    number: Yup.string()
       .required("Phone number is required")
       .min(3, "Phone number must be at least 3 characters")
       .max(50, "Phone number must be at most 50 characters")
       .matches(/^[0-9]+$/, "Phone number must be digits only"),
   });
 
+  // Update initialValues to match the validation schema
   const initialValues = { name: "", number: "" };
 
   const handleSubmit = (values, { resetForm }) => {
     addContact(values);
+    resetForm(); // Reset the form after submitting
   };
+
   return (
     <div>
       <Formik
@@ -30,7 +33,7 @@ const ContactForm = ({ addContact }) => {
           <Form>
             <div>
               <label htmlFor="name">Name</label>
-              <Field type="text" id="name" name="name"/>
+              <Field type="text" id="name" name="name" />
               <ErrorMessage
                 name="name"
                 component="div"
@@ -39,7 +42,7 @@ const ContactForm = ({ addContact }) => {
             </div>
             <div>
               <label htmlFor="number">Phone</label>
-              <Field type="text" id="number" name="number"/>
+              <Field type="text" id="number" name="number" />
               <ErrorMessage
                 name="number"
                 component="div"
