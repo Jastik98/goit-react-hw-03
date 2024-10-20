@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import ContactList from "./components/contactList/ContactList";
 import SearchBox from "./components/searchBox/SearchBox";
 import ContactForm from "./components/contactForm/ContactForm";
-import "./App.css";
+import "./App.css"
 
 function App() {
   const baseContacts = [
@@ -52,7 +52,7 @@ function App() {
   );
 
   return (
-    <div>
+    <div id="Wrapper">
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
       <SearchBox onSearch={onSearch} />

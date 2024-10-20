@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import css from "./ContactForm.module.css"
 
 const ContactForm = ({ addContact }) => {
   const validationSchema = Yup.object({
@@ -11,15 +12,15 @@ const ContactForm = ({ addContact }) => {
       .required("Phone number is required")
       .min(3, "Phone number must be at least 3 characters")
       .max(50, "Phone number must be at most 50 characters")
-      .matches(/^[0-9]+$/, "Phone number must be digits only"),
+      .matches(/^[0-9-]+$/, "Phone number must be digits only"),
   });
 
-  // Update initialValues to match the validation schema
+  
   const initialValues = { name: "", number: "" };
 
   const handleSubmit = (values, { resetForm }) => {
     addContact(values);
-    resetForm(); // Reset the form after submitting
+    resetForm(); 
   };
 
   return (
@@ -30,19 +31,31 @@ const ContactForm = ({ addContact }) => {
         initialValues={initialValues}
       >
         {() => (
-          <Form>
-            <div>
+          <Form className={css.Wrapper}>
+            <div className={css.WrapperElement}>
               <label htmlFor="name">Name</label>
-              <Field type="text" id="name" name="name" />
+              <Field
+                className={css.formField}
+                type="text"
+                id="name"
+                name="name"
+              />
               <ErrorMessage
                 name="name"
                 component="div"
-                style={{ color: "red" }}
+                style={{
+                  color: "red",
+                }}
               />
             </div>
-            <div>
+            <div className={css.WrapperElement}>
               <label htmlFor="number">Phone</label>
-              <Field type="text" id="number" name="number" />
+              <Field
+                className={css.formField}
+                type="text"
+                id="number"
+                name="number"
+              />
               <ErrorMessage
                 name="number"
                 component="div"
@@ -50,7 +63,7 @@ const ContactForm = ({ addContact }) => {
               />
             </div>
             <div>
-              <button type="submit">Add contact</button>
+              <button className={css.buttonAdd} type="submit">Add contact</button>
             </div>
           </Form>
         )}

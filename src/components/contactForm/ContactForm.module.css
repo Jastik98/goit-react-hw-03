@@ -1,0 +1,22 @@
+.formField {
+  width: 200px;
+}
+.Wrapper {
+    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  border: 1px solid black;
+  padding: 8px;
+  width: 210px;
+}
+.WrapperElement {
+  display: inherit;
+  flex-direction: inherit;
+  gap: 6px;
+}
+.buttonAdd {
+display: block;
+margin: 0 auto;
+}
